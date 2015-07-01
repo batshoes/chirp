@@ -56,25 +56,6 @@ def current_user
   end
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 get '/sign_in' do
   erb :sign_in
 end
@@ -98,4 +79,16 @@ post '/sign_in' do
     redirect '/sign_up'
   end
 end
+
+get '/signout' do
+
+  session[:user_id] = nil
+  #flash[:notice] = "signed out successfully. Come back soon"
+  redirect '/'
+  #goes in layout
+  # <% if current_user %>
+  # <a href="/signout">Sign Out</a>
+  # <% end %>
+end
+
 
