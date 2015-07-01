@@ -49,7 +49,7 @@ get '/profile' do
 end
 
 get '/edit_profile' do
-  @profile = current_user.profile
+  # @profile = current_user.profile
   erb :edit_profile
 end
 
