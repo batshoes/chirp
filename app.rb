@@ -33,6 +33,7 @@ post '/sign_up' do
   if confirmation == params[:user][:password]
   @user = User.create(params[:user])
   @user.create_profile
+  redirect '/create_profile'
   "Signed Up! Check your Email #{@user.username}"
   erb :sign_up
   else
@@ -49,12 +50,12 @@ get '/profile' do
   erb :profile
 end
 
-get '/edit_profile' do
-  @profile = current_user.profile
+get '/create_profile' do
+  # @profile = current_user.profile
   erb :edit_profile
 end
 
-post '/edit_profile' do
+post '/create_profile' do
   lname = params[:lname]
   fname = params[:fname]
   zip_code = params[:zip_code]
@@ -98,6 +99,7 @@ get '/sign_out' do
 end
 
 def current_user
+  
   if session[:user_id]
     @current_user = User.find session[:user_id]
 
