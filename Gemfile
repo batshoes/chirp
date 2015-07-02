@@ -4,7 +4,7 @@ source "https://rubygems.org"
 # gem "rails"
 gem 'sinatra'
 gem 'rake'
-gem 'sinatra-activerecord'
+gem 'sinatra-activerecord'  
 gem 'rack-flash3'
 
 
