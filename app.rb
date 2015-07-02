@@ -5,34 +5,46 @@ require 'rack-flash'
 
 set :database, "sqlite3:chirp.sqlite3"
 enable :sessions
-
+use Rack::Flash, sweep: true
 
 
 get '/' do
-  @stylesheet = '/style/home.css'
-  erb :home
+  if current_user
+    @stylesheet = '/style/home.css'
+    erb :home
+  else 
+    redirect '/sign_in'
+  end
+end
+post '/' do
+erb :home
 end
 
 
 get '/sign_up' do
+  @stylesheet = '/styles/sign_up.css'
   erb :sign_up
 end
 
 post '/sign_up' do  
+  @stylesheet = '/styles/sign_up.css'
   confirmation = params[:confirm_password]
 
   if confirmation == params[:user][:password]
   @user = User.create(params[:user])
   "Signed Up! Check your Email #{@user.username}"
+  erb :sign_up
   else
 
     "Uh Uh Ahh"
+    erb :sign_up
   end
 end
 
 
 get '/profile' do
   @profile = current_user.profile
+  @stylesheet = '/styles/profile.css'
   erb :profile
 end
 
@@ -50,18 +62,15 @@ post '/edit_profile' do
   redirect'/profile'
 end
 
-def current_user
-  if session[:user_id]
-    puts session[:user_id]
-    @current_user = User.find session[:user_id]
-  end
-end
+
 
 get '/sign_in' do
+  @stylesheet = '/styles/sign_in.css'
   erb :sign_in
 end
 
 post '/sign_in' do
+  @stylesheet = '/styles/sign_in.css'
   puts params.inspect
   username = params[:username]
   password = params[:password]
@@ -72,21 +81,27 @@ post '/sign_in' do
     session[:user_id] = @user.id
     puts session[:user_id] 
     puts "You logged In!"
-    #flash[:notice] = "Welcome #{@user.username}!"
     redirect '/'
+    flash[:notice] = "Welcome #{@user.username}!"
+    
   else
-    #flash[:notice] = "Uh Uh Ahh"
+    flash[:notice] = "Uh Uh Ahh"
     puts "Uh Uh Ahh"
     redirect '/sign_up'
   end
 end
 
-get '/signout' do
-
+get '/sign_out' do
+  @stylesheet = '/styles/sign_out.css'
   session[:user_id] = nil
-  #flash[:notice] = "signed out successfully. Come back soon"
+  flash[:notice] = "signed out successfully. Come back soon"
   redirect '/'
- 
+end
+
+def current_user
+  if session[:user_id]
+    @current_user = User.find session[:user_id]
+  end
 end
 
 

@@ -1,0 +1,15 @@
+body {
+  background-color: lightskyblue;
+}
+#nav {
+  height: 40px;
+  width: 101%;
+  background-color: rgba(0,0,0,0.4);
+}
+li {
+  font-family: 'Indie Flower';
+  display: inline;
+  float: right;
+  margin-left: 10px;
+  margin-right:10px;
+}
