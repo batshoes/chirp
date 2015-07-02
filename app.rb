@@ -80,13 +80,11 @@ post '/sign_in' do
   puts @user
   if @user.password == password
     session[:user_id] = @user.id
-    puts session[:user_id] 
-    puts "You logged In!"
+    
     redirect '/'
     flash[:notice] = "Welcome #{@user.username}!"
     
   else
-    puts "Uh Uh Ahh"
     erb :sign_in
     flash[:message] = "Uh Uh Ahh"
   end
@@ -102,8 +100,21 @@ end
 def current_user
   if session[:user_id]
     @current_user = User.find session[:user_id]
-
   end
+end
+
+get '/post' do
+  erb :post
+end
+
+post '/post' do
+  @stylesheet = '/styles/post.css'
+  @head = params[:title]
+  @chirp = params[:body]
+  @user = current_user.username
+  @id = current_user.user_id
+  Post.create(params[:post])
+  erb :post
 end
 
 
