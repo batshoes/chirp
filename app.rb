@@ -3,7 +3,7 @@ require 'sinatra/activerecord'
 require './models'
 require 'rack-flash'
 
-set :database, "sqlite3:chirp.sqlite3"
+configure(:development) {set :database, "sqlite3:chirp.sqlite3"}
 enable :sessions
 use Rack::Flash, sweep: true
 
