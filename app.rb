@@ -85,9 +85,9 @@ post '/sign_in' do
     flash[:notice] = "Welcome #{@user.username}!"
     
   else
-    flash[:notice] = "Uh Uh Ahh"
     puts "Uh Uh Ahh"
-    redirect '/sign_up'
+    erb :sign_in
+    flash[:message] = "Uh Uh Ahh"
   end
 end
 
@@ -101,7 +101,7 @@ end
 def current_user
   if session[:user_id]
     @current_user = User.find session[:user_id]
-    puts @current_user
+
   end
 end
 
