@@ -32,6 +32,7 @@ post '/sign_up' do
 
   if confirmation == params[:user][:password]
   @user = User.create(params[:user])
+  @user.create_profile
   "Signed Up! Check your Email #{@user.username}"
   erb :sign_up
   else
@@ -43,7 +44,7 @@ end
 
 
 get '/profile' do
-  @profile = current_user.profile
+  @profile = current_user.user_id
   @stylesheet = '/styles/profile.css'
   erb :profile
 end
