@@ -22,11 +22,12 @@ end
 
 
 get '/sign_up' do
-  @stylesheet = '/style/sign_up.css'
+  @stylesheet = '/styles/sign_up.css'
   erb :sign_up
 end
 
 post '/sign_up' do  
+  @stylesheet = '/styles/sign_up.css'
   confirmation = params[:confirm_password]
 
   if confirmation == params[:user][:password]
@@ -42,7 +43,7 @@ end
 
 
 get '/profile' do
-  # @profile = current_user.profile
+  @profile = current_user.profile
   @stylesheet = '/styles/profile.css'
   erb :profile
 end
@@ -64,10 +65,12 @@ end
 
 
 get '/sign_in' do
+  @stylesheet = '/styles/sign_in.css'
   erb :sign_in
 end
 
 post '/sign_in' do
+  @stylesheet = '/styles/sign_in.css'
   puts params.inspect
   username = params[:username]
   password = params[:password]
@@ -79,7 +82,7 @@ post '/sign_in' do
     puts session[:user_id] 
     puts "You logged In!"
     flash[:notice] = "Welcome #{@user.username}!"
-    redirect '/'
+    # redirect '/'
   else
     flash[:notice] = "Uh Uh Ahh"
     puts "Uh Uh Ahh"
@@ -88,6 +91,7 @@ post '/sign_in' do
 end
 
 get '/sign_out' do
+  @stylesheet = '/styles/sign_out.css'
   session[:user_id] = nil
   flash[:notice] = "signed out successfully. Come back soon"
   redirect '/'
