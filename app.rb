@@ -9,13 +9,15 @@ use Rack::Flash, sweep: true
 
 
 get '/' do
-
   if current_user
-  @stylesheet = '/style/home.css'
-  erb :home
-else 
-  redirect '/sign_in'
+    @stylesheet = '/style/home.css'
+    erb :home
+  else 
+    redirect '/sign_in'
+  end
 end
+post '/' do
+erb :home
 end
 
 
@@ -40,7 +42,8 @@ end
 
 
 get '/profile' do
-  @profile = current_user.profile
+  # @profile = current_user.profile
+  @stylesheet = '/styles/profile.css'
   erb :profile
 end
 
@@ -92,7 +95,6 @@ end
 
 def current_user
   if session[:user_id]
-    puts session[:user_id]
     @current_user = User.find session[:user_id]
   end
 end
