@@ -50,6 +50,7 @@ get '/profile' do
 end
 
 get '/edit_profile' do
+  
   # @profile = current_user.profile
   erb :edit_profile
 end
@@ -63,6 +64,33 @@ post '/edit_profile' do
   redirect'/profile'
 end
 
+
+def current_user
+  
+# @profile.update_attributes({fname: :fname, lname: :lname, })
+  if session[:user_id]
+    User.find session[:user_id]
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
 
 
 get '/sign_in' do
