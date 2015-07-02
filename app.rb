@@ -44,14 +44,13 @@ end
 
 
 get '/profile' do
-  @profile = current_user.user_id
+  @profile = current_user.profile 
   @stylesheet = '/styles/profile.css'
   erb :profile
 end
 
 get '/edit_profile' do
-  
-  # @profile = current_user.profile
+  @profile = current_user.profile
   erb :edit_profile
 end
 
@@ -81,8 +80,8 @@ post '/sign_in' do
     session[:user_id] = @user.id
     puts session[:user_id] 
     puts "You logged In!"
-    redirect '/'
     flash[:notice] = "Welcome #{@user.username}!"
+    redirect '/profile'
     
   else
     puts "Uh Uh Ahh"
