@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702132756) do
+ActiveRecord::Schema.define(version: 20150702150129) do
 
   create_table "posts", force: :cascade do |t|
     t.text     "body"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20150702132756) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string  "fname"
-    t.string  "lname"
+    t.string  "fname",      default: ""
+    t.string  "lname",      default: ""
     t.integer "zip_code"
-    t.string  "occupation"
+    t.string  "occupation", default: ""
     t.integer "user_id"
   end
 
