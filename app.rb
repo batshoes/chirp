@@ -9,7 +9,7 @@ enable :sessions
 
 
 get '/' do
-
+  @stylesheet = '/style/home.css'
   erb :home
 end
 
@@ -52,7 +52,8 @@ end
 
 def current_user
   if session[:user_id]
-    User.find session[:user_id]
+    puts session[:user_id]
+    @current_user = User.find session[:user_id]
   end
 end
 
@@ -85,10 +86,7 @@ get '/signout' do
   session[:user_id] = nil
   #flash[:notice] = "signed out successfully. Come back soon"
   redirect '/'
-  #goes in layout
-  # <% if current_user %>
-  # <a href="/signout">Sign Out</a>
-  # <% end %>
+ 
 end
 
 
