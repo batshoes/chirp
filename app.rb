@@ -81,8 +81,9 @@ post '/sign_in' do
     session[:user_id] = @user.id
     puts session[:user_id] 
     puts "You logged In!"
+    redirect '/'
     flash[:notice] = "Welcome #{@user.username}!"
-    # redirect '/'
+    
   else
     flash[:notice] = "Uh Uh Ahh"
     puts "Uh Uh Ahh"
