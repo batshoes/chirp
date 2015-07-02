@@ -9,27 +9,29 @@
     
     <div class="firstname_container">
       <div id="firstname">
-        <%= @profile.fname %>
+      
+        <h1><%= @profile.profile.fname %></h1>
       </div>
     </div>
 
     <div class="lastname_container">
       <div id="lastname">
-        <%= @profile.lname %>
+      
+        <%= @profile.profile.lname %>
 
       </div>
     </div>
 
     <div class="zipcode_container">
       <div id="zipcode">
-        <%= @profile.zip_code %>
+        <%= @profile.profile.zip_code %>
 
       </div>
     </div>
 
     <div class="occupation_container">
       <div id="occupation">
-        <%= @profile.occupation %>
+        <%= @profile.profile.occupation %>
 
       </div>
     </div>
