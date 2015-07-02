@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   has_one :profile
 end
 
-
 class Post < ActiveRecord::Base
   belongs_to :user 
 end
