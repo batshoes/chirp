@@ -49,7 +49,7 @@ get '/profile' do
 end
 
 get '/edit_profile' do
-  @profile = current_user.profile
+  # @profile = current_user.profile
   erb :edit_profile
 end
 
@@ -101,6 +101,7 @@ end
 def current_user
   if session[:user_id]
     @current_user = User.find session[:user_id]
+    puts @current_user
   end
 end
 
