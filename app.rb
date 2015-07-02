@@ -9,7 +9,7 @@ enable :sessions
 
 
 get '/' do
-
+  @stylesheet = '/style/home.css'
   erb :home
 end
 
