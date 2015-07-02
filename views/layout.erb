@@ -1,13 +1,17 @@
 <html>
 <head>
   <title></title>
+     <!-- Main CSS -->
+  <link rel="stylesheet" type="text/css" href=  "styles/main.css">
   
+  <!-- Seperatly Linked Style Sheet -->
+  <link rel="stylesheet" type="text/css" href= <%= @stylesheet %>>
 </head>
 <body>
 
   <%= yield %>
   <% if current_user %>
-  <a href="/signout">Sign Out</a>
+  <a href="/sign_out">Sign Out</a>
   <% end %>
 
 </body>
