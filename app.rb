@@ -109,10 +109,9 @@ end
 
 post '/post' do
   @stylesheet = '/styles/post.css'
-  @head = params[:title]
-  @chirp = params[:body]
+  @head = params[:post][:title]
+  @chirp = params[:post][:body]
   @user = current_user.username
-  @id = current_user.user_id
   Post.create(params[:post])
   erb :post
 end
