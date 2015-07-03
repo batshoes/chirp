@@ -33,7 +33,7 @@ post '/sign_up' do
   if confirmation == params[:user][:password]
   @user = User.create(params[:user])
   @user.create_profile
-  "Signed Up! Check your Email #{@user.username}"
+  flash[:notice] = "Signed Up! Check your Email #{@user.username}"
   erb :sign_up
   else
 

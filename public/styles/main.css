@@ -1,10 +1,10 @@
 body {
-  background-color: lightyellow;
+  background-color: gainsboro;
 }
 #nav {
   height: 40px;
   width: 101%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: gold;
   margin-top: -10px;
   margin-left: -10px;
 }
@@ -14,4 +14,9 @@ li {
   display: inline;
   float: right;
   margin: 10px;
+  color: ghostwhite
 }
+/*
+gainsboro
+gold
+ghostwhite*/
