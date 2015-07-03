@@ -38,11 +38,10 @@ post '/sign_up' do
 
   if confirmation == params[:user][:password]
   @user = User.create(params[:user])
-  # @user.create_profile(@user.id)
-  # params [:profile].merge!(user_id: @user.id)
 
-  redirect '/create_profile'
-  "Signed Up! Check your Email #{@user.username}"
+  @user.create_profile
+  flash[:notice] = "Signed Up! Check your Email #{@user.username}"
+
   erb :sign_up
   else
 
@@ -93,13 +92,14 @@ post '/sign_in' do
   puts @user
   if @user.password == password
     session[:user_id] = @user.id
-    puts session[:user_id] 
-    puts "You logged In!"
+
+    
+    redirect '/'
+
     flash[:notice] = "Welcome #{@user.username}!"
     redirect '/profile'
     
   else
-    puts "Uh Uh Ahh"
     erb :sign_in
     flash[:message] = "Uh Uh Ahh"
   end
@@ -133,5 +133,19 @@ end
 
 
 
+>>>>>>> master
+
+get '/post' do
+  erb :post
+end
+
+post '/post' do
+  @stylesheet = '/styles/post.css'
+  @head = params[:post][:title]
+  @chirp = params[:post][:body]
+  @user = current_user.username
+  Post.create(params[:post])
+  erb :post
+end
 
 

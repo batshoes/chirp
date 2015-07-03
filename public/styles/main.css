@@ -1,15 +1,22 @@
 body {
-  background-color: lightskyblue;
+  background-color: gainsboro;
 }
 #nav {
   height: 40px;
   width: 101%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: gold;
+  margin-top: -10px;
+  margin-left: -10px;
 }
+
 li {
   font-family: 'Indie Flower';
   display: inline;
   float: right;
-  margin-left: 10px;
-  margin-right:10px;
+  margin: 10px;
+  color: ghostwhite
 }
+/*
+gainsboro
+gold
+ghostwhite*/

@@ -9,18 +9,19 @@
   <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  <div id='filler'></div>
   <div id="nav">
     <ul>
-      <li><a href="/sign_up">Sign up</a></li>
-      <li><a href="/sign_in">Sign in</a></li>
-      <li><a href="/profile">Profile</a></li>
-      <li><a href="/posts">Posts</a></li>
+      <li id="signup"><a href="/sign_up">Sign up</a></li>
+      <li id="singin"><a href="/sign_in">Sign in</a></li>
+      <li id="profile"><a href="/profile">Profile</a></li>
+      <li id="post"><a href="/post">Posts</a></li>
+      <li id="signout">  <% if current_user %>
+  <a href="/sign_out">Sign Out</a>
+  <% end %></li>
     </ul>
   </div>
   <%= yield %>
-  <% if current_user %>
-    <a href="/sign_out">Sign Out</a>
-  <% end %>
 
 </body>
 </html>
