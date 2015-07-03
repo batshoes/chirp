@@ -7,6 +7,12 @@ configure(:development) {set :database, "sqlite3:chirp.sqlite3"}
 enable :sessions
 use Rack::Flash, sweep: true
 
+def current_user
+
+  if session[:user_id]
+    @current_user = User.find session[:user_id]
+  end
+end
 
 get '/' do
   if current_user
@@ -32,8 +38,10 @@ post '/sign_up' do
 
   if confirmation == params[:user][:password]
   @user = User.create(params[:user])
+
   @user.create_profile
   flash[:notice] = "Signed Up! Check your Email #{@user.username}"
+
   erb :sign_up
   else
 
@@ -44,26 +52,30 @@ end
 
 
 get '/profile' do
-  @profile = current_user.user_id
+  @profile = current_user 
   @stylesheet = '/styles/profile.css'
   erb :profile
 end
 
-get '/edit_profile' do
+get '/create_profile' do
   # @profile = current_user.profile
+
   erb :edit_profile
 end
 
-post '/edit_profile' do
-  lname = params[:lname]
-  fname = params[:fname]
-  zip_code = params[:zip_code]
-  occupation = [:occupation]
+post '/create_profile' do
+  @profile = Profile.create(params[:profile])
+  # @profile.user_id = current_user.id
+  # @profile.save
+  # @lname = params[:lname]
+  # @fname = params[:fname]
+  # @zip_code = params[:zip_code]
+  # @occupation = [:occupation]
+  # puts session[:user_id]
+  puts params.inspect
   #save profile
   redirect'/profile'
 end
-
-
 
 get '/sign_in' do
   @stylesheet = '/styles/sign_in.css'
@@ -80,9 +92,12 @@ post '/sign_in' do
   puts @user
   if @user.password == password
     session[:user_id] = @user.id
+
     
     redirect '/'
+
     flash[:notice] = "Welcome #{@user.username}!"
+    redirect '/profile'
     
   else
     erb :sign_in
@@ -97,11 +112,28 @@ get '/sign_out' do
   redirect '/'
 end
 
-def current_user
-  if session[:user_id]
-    @current_user = User.find session[:user_id]
-  end
-end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> master
 
 get '/post' do
   erb :post
