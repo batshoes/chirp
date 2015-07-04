@@ -1,20 +1,27 @@
 body {
-  background-color: gainsboro;
+  background: url("../images/canary.jpg") no-repeat center;
+  background-size: cover;
 }
 #nav {
   height: 40px;
   width: 101%;
-  background-color: gold;
   margin-top: -10px;
   margin-left: -10px;
 }
 
 li {
-  font-family: 'Indie Flower';
+  font-family: 'Josefin sans', sans-serif;
   display: inline;
   float: right;
   margin: 10px;
   color: ghostwhite
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+
+  text-decoration: underline;
 }
 /*
 gainsboro

@@ -112,40 +112,19 @@ get '/sign_out' do
   redirect '/'
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> master
-
 get '/post' do
   erb :post
 end
 
 post '/post' do
   @stylesheet = '/styles/post.css'
-  @head = params[:post][:title]
-  @chirp = params[:post][:body]
+  @head = params[:title]
+  @chirp = params[:body]
   @user = current_user.username
-  Post.create(params[:post])
+  @post = Post.create({title: params[:title], body: params[:body], user_id: session[:user_id] })
+   @time = @post.created_at
   erb :post
+
 end
 
 
