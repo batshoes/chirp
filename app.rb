@@ -15,6 +15,7 @@ def current_user
 end
 
 get '/' do
+
   if current_user
     @stylesheet = '/style/home.css'
     erb :home
@@ -88,8 +89,13 @@ post '/sign_in' do
   username = params[:username]
   password = params[:password]
 
-  @user = User.where(username: username).first
-  puts @user
+  if !User.where(username: username).first.nil?
+
+    @user = User.where(username: username).first
+  else 
+    flash[:message] = "Uh Uh Ahh"
+    redirect '/sign_up'
+  end
   if @user.password == password
     session[:user_id] = @user.id
 
@@ -122,7 +128,7 @@ post '/post' do
   @chirp = params[:body]
   @user = current_user.username
   @post = Post.create({title: params[:title], body: params[:body], user_id: session[:user_id] })
-   @time = @post.created_at
+  @time = @post.created_at
   erb :post
 
 end
