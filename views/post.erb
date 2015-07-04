@@ -9,9 +9,12 @@
 <div class="chirp"><%= @chirp %></div>
 <label>By <%= @user %> at <%= @time %> </label>
 
-
-<h2><br><br> Your last 10 posts</h2>
+<div class="feed">
+<h1>Your last 10 posts</h1>
   <% current_user.posts.last(10).reverse.each do |x| %>
-  <p><%= x.title %></p>
-  <p><%= x.body %></p>
+  <div>
+    <p><%= x.title %></p>
+    <p><%= x.body %></p>
+  </div>
   <% end %>
+</div>

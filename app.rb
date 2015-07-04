@@ -17,7 +17,7 @@ end
 get '/' do
 
   if current_user
-    @stylesheet = '/style/home.css'
+    @stylesheet = '/styles/home.css'
     erb :home
   else 
     redirect '/sign_in'
@@ -39,18 +39,14 @@ post '/sign_up' do
 
   if confirmation == params[:user][:password]
   @user = User.create(params[:user])
-
   @user.create_profile
   flash[:notice] = "Signed Up! Check your Email #{@user.username}"
-
   erb :sign_up
   else
-
     "Uh Uh Ahh"
     erb :sign_up
   end
 end
-
 
 get '/profile' do
   @profile = current_user 
@@ -60,7 +56,6 @@ end
 
 get '/create_profile' do
   # @profile = current_user.profile
-
   erb :edit_profile
 end
 
@@ -74,7 +69,6 @@ post '/create_profile' do
   # @occupation = [:occupation]
   # puts session[:user_id]
   puts params.inspect
-  #save profile
   redirect'/profile'
 end
 
@@ -85,26 +79,21 @@ end
 
 post '/sign_in' do
   @stylesheet = '/styles/sign_in.css'
-  puts params.inspect
   username = params[:username]
   password = params[:password]
 
   if !User.where(username: username).first.nil?
-
     @user = User.where(username: username).first
   else 
     flash[:message] = "Uh Uh Ahh"
     redirect '/sign_up'
   end
+
   if @user.password == password
     session[:user_id] = @user.id
-
-    
     redirect '/'
-
     flash[:notice] = "Welcome #{@user.username}!"
     redirect '/profile'
-    
   else
     erb :sign_in
     flash[:message] = "Uh Uh Ahh"
@@ -130,7 +119,4 @@ post '/post' do
   @post = Post.create({title: params[:title], body: params[:body], user_id: session[:user_id] })
   @time = @post.created_at
   erb :post
-
 end
-
-

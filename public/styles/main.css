@@ -1,12 +1,16 @@
 body {
   background: url("../images/canary.jpg") no-repeat center;
+  background-position: center center;
+  background-attachment: fixed;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 #nav {
   height: 40px;
   width: 101%;
   margin-top: -10px;
   margin-left: -10px;
+  position: fixed;
 }
 
 li {
@@ -23,7 +27,14 @@ a:hover {
 
   text-decoration: underline;
 }
-/*
-gainsboro
-gold
-ghostwhite*/
+h1 {
+  text-align: center;
+  font-family:'Josefin sans', sans-serif;
+}
+.feed {
+  width: 25%;
+  margin: 0 auto;
+  background:ghostwhite;
+  height: 300px;
+  border: thin solid black;
+}
