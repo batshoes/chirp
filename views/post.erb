@@ -8,3 +8,13 @@
 <div class="header"><%= @head %></div>
 <div class="chirp"><%= @chirp %></div>
 <label>By <%= @user %> at <%= @time %> </label>
+
+<div class="feed">
+<h1>Your last 10 posts</h1>
+  <% current_user.posts.last(10).reverse.each do |x| %>
+  <div>
+    <p><%= x.title %></p>
+    <p><%= x.body %></p>
+  </div>
+  <% end %>
+</div>

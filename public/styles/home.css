@@ -1,0 +1,13 @@
+
+h3 {
+  font-family:'Joesfin sans', sans-serif;
+}
+
+.opening {
+  background-color: rgba(0,0,0,0.1);
+  font-family:'Josefin sans', sans-serif;
+  margin: 0 auto;
+  width: 80%;
+  padding: 30px;
+}
+
