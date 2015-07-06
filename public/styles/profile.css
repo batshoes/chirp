@@ -10,15 +10,15 @@
 	padding: 10px;
 }
 
-.firstname_container {
-	float: left;
+.name_container {
+	text-align: center;
+  float: left;
 }
 
-.lastname_container {
-	float: left;
-}
+
 
 .details_container {
-	clear: both;
+	clear: left;
 	display: block;
 }
+
