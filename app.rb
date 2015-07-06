@@ -23,8 +23,9 @@ get '/' do
     redirect '/sign_in'
   end
 end
+
 post '/' do
-erb :home
+  erb :home
 end
 
 
@@ -38,10 +39,10 @@ post '/sign_up' do
   confirmation = params[:confirm_password]
 
   if confirmation == params[:user][:password]
-  @user = User.create(params[:user])
-  @user.create_profile
-  flash[:notice] = "Signed Up! Check your Email #{@user.username}"
-  erb :sign_up
+    @user = User.create(params[:user])
+    @user.create_profile
+    flash[:notice] = "Signed Up! Check your Email #{@user.username}"
+    erb :sign_up
   else
     "Uh Uh Ahh"
     erb :sign_up
