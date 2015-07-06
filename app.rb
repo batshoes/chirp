@@ -7,8 +7,9 @@ configure(:development) {set :database, "sqlite3:chirp.sqlite3"}
 enable :sessions
 use Rack::Flash, sweep: true
 
-def current_user
 
+
+def current_user
   if session[:user_id]
     @current_user = User.find session[:user_id]
   end
@@ -23,10 +24,10 @@ get '/' do
     redirect '/sign_in'
   end
 end
+
 post '/' do
 erb :home
 end
-
 
 get '/sign_up' do
   @stylesheet = '/styles/sign_up.css'
@@ -41,7 +42,6 @@ post '/sign_up' do
   @user = User.create(params[:user])
   @user.create_profile
   flash[:notice] = "Signed Up! Check your Email #{@user.username}"
-  erb :sign_up
   else
     "Uh Uh Ahh"
     erb :sign_up
@@ -55,12 +55,15 @@ get '/profile' do
 end
 
 get '/create_profile' do
+  @stylesheet = '/styles/edit_profile.css'
   # @profile = current_user.profile
   erb :edit_profile
 end
 
 post '/create_profile' do
   @profile = Profile.create(params[:profile])
+  @stylesheet = '/styles/edit_profile.css'
+  
   # @profile.user_id = current_user.id
   # @profile.save
   # @lname = params[:lname]
@@ -120,3 +123,22 @@ post '/post' do
   @time = @post.created_at
   erb :post
 end
+
+delete '/users/:id' do
+        session.clear
+        current_user.delete
+       erb :edit_profile
+end
+
+
+
+
+
+
+
+
+
+
+
+
+

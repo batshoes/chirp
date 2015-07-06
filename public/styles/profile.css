@@ -1,0 +1,24 @@
+.profile_container {
+  background-color: rgba(0,0,0,0.1);
+  font-family:'Josefin sans', sans-serif;
+  margin: 0 auto;
+  width: 80%;
+  padding: 30px;
+}
+.photo_container {
+	float: left;
+	padding: 10px;
+}
+
+.firstname_container {
+	float: left;
+}
+
+.lastname_container {
+	float: left;
+}
+
+.details_container {
+	clear: both;
+	display: block;
+}

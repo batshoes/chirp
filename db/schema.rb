@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150702150129) do
     t.string  "lname",      default: ""
     t.integer "zip_code"
     t.string  "occupation", default: ""
-    t.integer "user_id" 
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,9 +1,9 @@
-
+  <h1>Profile</h1>
   <div class="profile_container">
     
     <div class="photo_container">
       <div id="photo">
-        <img src="##">
+        <img src="/images/Default_Profile.jpg">
       </div>
     </div>
     
@@ -17,23 +17,30 @@
     <div class="lastname_container">
       <div id="lastname">
       
-        <%= @profile.profile.lname %>
+        <h1><%= @profile.profile.lname %></h1>
 
       </div>
     </div>
 
-    <div class="zipcode_container">
-      <div id="zipcode">
-        <%= @profile.profile.zip_code %>
-
-      </div>
-    </div>
-
-    <div class="occupation_container">
+    <div class="details_container">
       <div id="occupation">
-        <%= @profile.profile.occupation %>
+        <h2><%= @profile.profile.occupation %></h2>
+      </div>
+    
+      <div id="zipcode">
+        <p><%= @profile.profile.zip_code %></p>
 
       </div>
+    </div>
+
+    
+
+    <div class="editprofile_container">
+      <a href="/create_profile">Edit Profile</a>
+    </div>
+
+    <div class="editprofile_container">
+      <a href="/create_profile">Edit Profile</a>
     </div>
   
   </div>
