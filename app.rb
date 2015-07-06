@@ -116,7 +116,7 @@ get '/post' do
 end
 
 post '/post' do
-  @stylesheet = '/styles/post.css'
+  @stylesheet = '/styles/profile.css'
   @head = params[:title]
   @chirp = params[:body]
   @user = current_user.username
