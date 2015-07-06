@@ -42,7 +42,6 @@ post '/sign_up' do
   @user = User.create(params[:user])
   @user.create_profile
   flash[:notice] = "Signed Up! Check your Email #{@user.username}"
-  erb :sign_up
   else
     "Uh Uh Ahh"
     erb :sign_up
@@ -56,12 +55,15 @@ get '/profile' do
 end
 
 get '/create_profile' do
+  @stylesheet = '/styles/edit_profile.css'
   # @profile = current_user.profile
   erb :edit_profile
 end
 
 post '/create_profile' do
   @profile = Profile.create(params[:profile])
+  @stylesheet = '/styles/edit_profile.css'
+  
   # @profile.user_id = current_user.id
   # @profile.save
   # @lname = params[:lname]
@@ -125,7 +127,7 @@ end
 delete '/users/:id' do
         session.clear
         current_user.delete
-       redirect '/sign_up'
+       erb :edit_profile
 end
 
 
@@ -140,4 +142,4 @@ end
 
 
 
->>>>>>> delete profile added/
+
