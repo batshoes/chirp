@@ -12,7 +12,7 @@
 <div class="feed">
 <h1>Your last 10 posts</h1>
   <% current_user.posts.last(10).reverse.each do |x| %>
-  <div>
+  <div class="feed">
     <p><%= x.title %></p>
     <p><%= x.body %></p>
   </div>
