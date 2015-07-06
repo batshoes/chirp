@@ -26,7 +26,7 @@ get '/' do
 end
 
 post '/' do
-erb :home
+  erb :home
 end
 
 get '/sign_up' do
@@ -39,9 +39,10 @@ post '/sign_up' do
   confirmation = params[:confirm_password]
 
   if confirmation == params[:user][:password]
-  @user = User.create(params[:user])
-  @user.create_profile
-  flash[:notice] = "Signed Up! Check your Email #{@user.username}"
+    @user = User.create(params[:user])
+    @user.create_profile
+    flash[:notice] = "Signed Up! Check your Email #{@user.username}"
+    erb :sign_up
   else
     "Uh Uh Ahh"
     erb :sign_up
@@ -76,12 +77,12 @@ post '/create_profile' do
 end
 
 get '/sign_in' do
-  @stylesheet = '/styles/sign_in.css'
+  @stylesheet = '/styles/sign_up.css'
   erb :sign_in
 end
 
 post '/sign_in' do
-  @stylesheet = '/styles/sign_in.css'
+  @stylesheet = '/styles/sign_up.css'
   username = params[:username]
   password = params[:password]
 

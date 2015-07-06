@@ -1,33 +1,39 @@
 <html>
 <head>
   <title></title>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
      <!-- Main CSS -->
   <link rel="stylesheet" type="text/css" href=  "styles/main.css">
+  
   
   <!-- Seperatly Linked Style Sheet -->
   <link rel="stylesheet" type="text/css" href= <%= @stylesheet %>>
 
-<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div id="nav">
     <% if current_user %>
-    <ul>
-      <li id="home"><a href="/">Home</a></li>
+    <ul role="navigation" class="nav">
+      <li><a href="/">Home</a></li>
       
-      <li id="profile"><a href="/profile">Profile</a></li>
-      <li id="post"><a href="/post">Posts</a></li>
-      <li id="signout"><a href="/sign_out">Sign Out</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/post">Posts</a></li>
+      <li><a href="/sign_out">Sign Out</a></li>
     </ul>
     <% end %>
     <% if !current_user %>
-  <ul>
-      <li id="signup"><a href="/sign_up">Sign up</a></li>
-      <li id="singin"><a href="/sign_in">Sign in</a></li>
+  <ul class="nav">
+      <li><a href="/sign_up">Sign up</a></li>
+      <li><a href="/sign_in">Sign in</a></li>
   </ul>
   <% end %>
-  </div>
+
   <%= yield %>
+
+
 
 </body>
 </html>
+
