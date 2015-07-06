@@ -74,12 +74,12 @@ post '/create_profile' do
 end
 
 get '/sign_in' do
-  @stylesheet = '/styles/sign_in.css'
+  @stylesheet = '/styles/sign_up.css'
   erb :sign_in
 end
 
 post '/sign_in' do
-  @stylesheet = '/styles/sign_in.css'
+  @stylesheet = '/styles/sign_up.css'
   username = params[:username]
   password = params[:password]
 
