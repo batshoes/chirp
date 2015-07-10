@@ -11,8 +11,11 @@ use Rack::Flash, sweep: true
 
 def current_user
   if session[:user_id]
-    @current_user = User.find session[:user_id]
+    User.find session[:user_id]
   end
+end
+def create_profile
+  if @user.
 end
 
 get '/' do
@@ -50,29 +53,24 @@ post '/sign_up' do
 end
 
 get '/profile' do
-  @profile = current_user 
-  @stylesheet = '/styles/profile.css'
-  erb :profile
+  @profile = Profile.find current_user.id
+  if !@profile.nil?
+    erb :profile
+  else
+    redirect '/create_profile'
+  end 
 end
 
 get '/create_profile' do
+ 
+
   @stylesheet = '/styles/edit_profile.css'
-  # @profile = current_user.profile
   erb :edit_profile
 end
 
 post '/create_profile' do
-  @profile = Profile.create(params[:profile])
+  ``@profile = Profile.create(params[:profile])
   @stylesheet = '/styles/edit_profile.css'
-  
-  # @profile.user_id = current_user.id
-  # @profile.save
-  # @lname = params[:lname]
-  # @fname = params[:fname]
-  # @zip_code = params[:zip_code]
-  # @occupation = [:occupation]
-  # puts session[:user_id]
-  puts params.inspect
   redirect'/profile'
 end
 

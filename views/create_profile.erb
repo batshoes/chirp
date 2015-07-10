@@ -1,6 +1,6 @@
-<h1>Edit Profile</h1>
+<h1>Create Profile</h1>
 <div class="form_container">
-<form method='POST' action'/edit_profile'>
+<form method='POST' action'/create_profile'>
   <input type="hidden"name= "[profile]user_id" value=<%=current_user.id %>>
   <input type='text' name="[profile]lname" placeholder="Last Name">
   <input type='text' name="[profile]fname" placeholder="First Name">
@@ -10,8 +10,3 @@
 
 </form>
 </div>
-
-<div method="delete_container">
-	<a href="/users/:id">Delete Profile</a>
-</div>
-

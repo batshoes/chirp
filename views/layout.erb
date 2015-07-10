@@ -22,7 +22,7 @@
   <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
- 
+ <% session[:id] = nil %>
   <div class-"navbar">
     <% if current_user %>
     <ul role="navigation" class="nav">
@@ -43,6 +43,10 @@
   <% end %>
    <div class="filler"></div>
   <div>
+  
+  <% if flash[:alert] %>
+    <%= flash[:alert] %>
+  <%end%>
 
   <%= yield %>
 
