@@ -9,14 +9,16 @@
     
     <div class="name_container">
       
-        <h1><%= @profile.profile.fname %></h1>
-        <h1><%= @profile.profile.lname %></h1>
+  <div><%= @profile.lname %></div>
+  <div><%= @profile.fname %></div>
+  
 
     </div>
 
     <div class="details_container">
-        <h2><%= @profile.profile.occupation %></h2>
-        <p><%= @profile.profile.zip_code %></p>
+
+    <div><%= @profile.zip_code %></div>
+    <div><%= @profile.occupation %></div>
 
     </div>
 

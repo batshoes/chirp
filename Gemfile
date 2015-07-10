@@ -6,6 +6,7 @@ gem 'sinatra'
 gem 'rake'
 gem 'sinatra-activerecord'  
 gem 'rack-flash3'
+gem 'pry-byebug'
 
 
 
