@@ -12,10 +12,8 @@ use Rack::Flash, sweep: true
 def current_user
   if session[:user_id]
     User.find session[:user_id]
+
   end
-end
-def create_profile
-  if @user.
 end
 
 get '/' do
@@ -43,9 +41,14 @@ post '/sign_up' do
 
   if confirmation == params[:user][:password]
     @user = User.create(params[:user])
-    @user.create_profile
+    @profile = Profile.create(params[:profile])
+    session[:user_id] = @user.id
+    @profile.user_id = @user.id
+    @profile.save
+    redirect '/'
+
+
     flash[:notice] = "Signed Up! Check your Email #{@user.username}"
-    erb :sign_up
   else
     "Uh Uh Ahh"
     erb :sign_up
@@ -54,24 +57,28 @@ end
 
 get '/profile' do
   @profile = Profile.find current_user.id
-  if !@profile.nil?
     erb :profile
-  else
-    redirect '/create_profile'
-  end 
 end
-
-get '/create_profile' do
- 
-
-  @stylesheet = '/styles/edit_profile.css'
+get '/edit_profile' do
   erb :edit_profile
-end
 
-post '/create_profile' do
-  ``@profile = Profile.create(params[:profile])
-  @stylesheet = '/styles/edit_profile.css'
-  redirect'/profile'
+end
+post '/edit_profile' do
+  @profile = Profile.find current_user.id
+   if params[:profile][:fname] != ''
+    @profile.update(fname: params[:profile][:fname])
+  end
+  if params[:profile][:lname] != ''
+    @profile.update(lname: params[:profile][:lname])
+  end
+  if params[:profile][:zip_code] != ''
+    @profile.update(zip_code: params[:profile][:zip_code])
+  end
+  if params[:profile][:occupation] != ''
+    @profile.update(occupation: params[:profile][:occupation])
+  end
+  erb :edit_profile
+  redirect '/profile'
 end
 
 get '/sign_in' do
@@ -87,7 +94,7 @@ post '/sign_in' do
   if !User.where(username: username).first.nil?
     @user = User.where(username: username).first
   else 
-    flash[:message] = "Uh Uh Ahh"
+    flash[:notice] = "Uh Uh Ahh"
     redirect '/sign_up'
   end
 
@@ -95,10 +102,9 @@ post '/sign_in' do
     session[:user_id] = @user.id
     redirect '/'
     flash[:notice] = "Welcome #{@user.username}!"
-    redirect '/profile'
   else
     erb :sign_in
-    flash[:message] = "Uh Uh Ahh"
+    flash[:notice] = "Uh Uh Ahh"
   end
 end
 

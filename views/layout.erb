@@ -44,8 +44,10 @@
    <div class="filler"></div>
   <div>
   
-  <% if flash[:alert] %>
-    <%= flash[:alert] %>
+  <% if flash[:notice] %>
+    <div>
+      <%= flash[:notice] %>
+    </div>
   <%end%>
 
   <%= yield %>
